@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @list.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @list.description %>
+</p>
+
+<p>
+  <strong>Steps:</strong>
+</p>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
+
+<h2>Steps</h2>
+  <% @list.steps.each do |step| %>
+    <p>
+      <strong>Steps:</strong>
+      <%= step.name %>
+    </p>
+
+  <% end %>
+
+<h2>Add a step:</h2>
+<%= form_for([@list, @list.steps.build]) do |f| %>
+  <p>
+    <%= f.label :name %> <br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
